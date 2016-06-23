@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f059920205e9fcf8f9a79edf70c8b9f4",
-    "content-hash": "e9655f2a17dba8c58002c5fa01ec4c23",
+    "hash": "9e1dd065e81fdc554a385108afa547b3",
+    "content-hash": "33a71d87b9440205a39e63e5306cd627",
     "packages": [
         {
             "name": "avalon/core",
@@ -999,7 +999,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4"
+        "php": ">=5.5"
     },
     "platform-dev": []
 }
