@@ -6,8 +6,11 @@ $config = [
     ]
 ];
 
-$db = [
-    'mysql' => [
+$db = getenv('DB');
+
+if ($db == 'mariadb' || $db == 'mysql') {
+    // MariaDB and MySQL config
+    $config['db']['test'] = [
         'driver'   => 'pdo_mysql',
         'host'     => '127.0.0.1',
         'user'     => 'travis',
@@ -15,9 +18,10 @@ $db = [
         'dbname'   => 'app_test',
         'prefix'   => 'test_',
         'charset'  => 'utf8'
-    ],
-
-    'postgresql' => [
+    ];
+} elseif ($db == 'postgresql') {
+    // PostgreSQL config
+    $config['db']['test'] = [
         'driver'   => 'pdo_pgsql',
         'host'     => '127.0.0.1',
         'user'     => 'postgres',
@@ -25,14 +29,13 @@ $db = [
         'dbname'   => 'app_test',
         'prefix'   => 'test_',
         'charset'  => 'utf8'
-    ],
-
-    'sqlite' => [
+    ];
+} elseif ($db == 'sqlite') {
+    // SQLite config
+    $config['db']['test'] = [
         'driver' => 'pdo_sqlite',
         'memory' => true
-    ]
-];
-
-$config['db']['test'] = $db[getenv('DB')];
+    ];
+}
 
 return $config;

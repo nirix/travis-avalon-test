@@ -1,15 +1,4 @@
 language: php
-php:
-  - 5.5
-  - 5.6
-  - 7.0
-services:
-  - mysql
-  - postgresql
-env:
-  - DB=mysql
-  - DB=postgresql
-  - DB=sqlite
 install:
   - composer install
   - mv config/config.travis.php config/config.php
@@ -20,3 +9,52 @@ script: php tests/test.php
 matrix:
   allow_failures:
     - env: DB=sqlite
+  fast_finish: true
+  include:
+    # MariaDB
+    - php: 5.5
+      env: DB=mariadb
+      addons:
+        mariadb: '10.1'
+    - php: 5.6
+      env: DB=mariadb
+      addons:
+        mariadb: '10.1'
+    - php: 7.0
+      env: DB=mariadb
+      addons:
+        mariadb: '10.1'
+    # MySQL
+    - php: 5.5
+      env: DB=mysql
+      services:
+        - mysql
+    - php: 5.6
+      env: DB=mysql
+      services:
+        - mysql
+    - php: 7.0
+      env: DB=mysql
+      services:
+        - mysql
+    # PostgreSQL
+    - php: 5.5
+      env: DB=postgresql
+      services:
+        - postgresql
+    - php: 5.6
+      env: DB=postgresql
+      services:
+        - postgresql
+    - php: 7.0
+      env: DB=postgresql
+      services:
+        - postgresql
+    # SQLite
+    - php: 5.5
+      env: DB=sqlite
+    - php: 5.6
+      env: DB=sqlite
+    - php: 7.0
+      env: DB=sqlite
+
